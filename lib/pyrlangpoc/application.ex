@@ -12,9 +12,10 @@ defmodule Pyrlangpoc.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Pyrlangpoc.PubSub},
       # Start the Endpoint (http/https)
-      PyrlangpocWeb.Endpoint
+      PyrlangpocWeb.Endpoint,
       # Start a worker by calling: Pyrlangpoc.Worker.start_link(arg)
       # {Pyrlangpoc.Worker, arg}
+      Pyrlangpoc.Observer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
