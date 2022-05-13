@@ -31,3 +31,4 @@ pyrlangpoc-*.tar
 *.pyc
 .vscode
 .elixir_ls
+venv
