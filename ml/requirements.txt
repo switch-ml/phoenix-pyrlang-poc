@@ -1,0 +1,27 @@
+# Stats & exploratory analysis
+Numpy
+pandas
+SciPy
+Statsmodels
+Patsy
+Emcee
+# Machine learning
+Scikit-learn
+TensorFlow
+Keras
+Theano
+Lifelines
+# Data visualization
+Matplotlib
+Plotly
+Seaborn
+# Geomap
+Folium
+Networkx
+# Scraping & NLP
+BeautifulSoup4
+NLTK
+ScraPy
+Requests
+Gensim
+TextBlob

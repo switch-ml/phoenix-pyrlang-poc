@@ -1,0 +1,5 @@
+version: "3" # version of compose format
+
+services:
+  ml-poc:
+    build: . # path is relative to docker-compose.yml localtion
