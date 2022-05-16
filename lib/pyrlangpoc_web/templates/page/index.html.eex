@@ -1,0 +1,59 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Pyrlang-POC" %></h1>
+</section>
+
+
+<div class="form-group" id="create">
+  <div class="col-md-3">
+  <label>Strategy</label>
+    <input
+      type="text"
+      id="strategy"
+      class="form-control"
+      placeholder="Enter Strategy"
+    />
+  </div>
+
+  <div class="col-md-3">
+    <label>Script</label>
+    <div>
+      <input type="file" id="script-file" class="form-control" />
+      <div style="margin: 15px">-- or --</div>
+      <textarea id="script" name="script" rows="10" cols="50"></textarea>
+    </div>
+    <button id="submit">Submit</button>
+  </div>
+</div>
+
+<div class="form-group" id="execute">
+  <div class="col-md-3">
+    <div>
+      <label>ID:</label>
+      <pre id="query-id"></pre>
+    </div>
+    <div>
+      <label>Strategy:</label>
+      <pre id="query-strategy"></pre>
+    </div>
+    <div>
+      <label>Source:</label>
+      <pre id="source-div"></pre>
+    </div>
+    <div class="col-md-9">
+      <label>Input</label>
+      <textarea id="script-input" name="script" rows="4" cols="50"></textarea>
+    </div>
+    <button id="submit-execution">Submit</button>
+  </div>
+</div>
+
+<div id="result">
+  <div>
+    <label>User Input:</label>
+    <pre id="input-div"></pre>
+  </div>
+  <div>
+    <label>Response:</label>
+    <pre id="result-div"></pre>
+  </div>
+</div>
