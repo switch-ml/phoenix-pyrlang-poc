@@ -1,3 +1,5 @@
+setuptools-rust
+semantic-version
 git+https://github.com/Pyrlang/Pyrlang
 git+https://github.com/Pyrlang/Term
 epicbox==1.1.0

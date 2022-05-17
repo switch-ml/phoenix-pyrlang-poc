@@ -1,8 +1,14 @@
 version: '3.7'
 
 services:
-  app:
+  web:
     build:
       context: ./
+      dockerfile: ./docker/Dockerfile.phoenix
     ports:
       - 4000:4000
+      - 43699:43699
+  # app:
+  #   build:
+  #     context: ./
+  #     dockerfile: ./docker/Dockerfile.python

@@ -20,4 +20,4 @@
 
 echo "\n Launching Phoenix web server..."
 # Start the phoenix web server
-mix phx.server
+elixir --name erl@172.17.0.1 --cookie secret -S mix phx.server

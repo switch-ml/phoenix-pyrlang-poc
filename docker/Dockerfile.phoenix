@@ -8,10 +8,6 @@ RUN apt-get update && \
     apt-get install -y postgresql-client
 
 
-# Create app directory and copy the Elixir projects into it
-RUN mkdir /app
-COPY . /app
-WORKDIR /app
 
 
 # Install hex package manager
@@ -34,12 +30,18 @@ RUN apt-get update && apt-get install -y \
     inotify-tools \
     && rm -rf /var/lib/apt/lists/*
 
+# Create app directory and copy the Elixir projects into it
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
 
 # dependencies cleaning
 RUN mix deps.clean --all
 
 # Fetching dependencies
-RUN mix deps.get --force
+# RUN mix deps.get --force
+
+RUN mix setup
 
 RUN mix deps.update --all
 
