@@ -1,0 +1,15 @@
+FROM node:14.18.2-alpine
+
+ENV APP_HOME /app
+
+RUN mkdir -p $APP_HOME
+
+COPY assets /app
+
+WORKDIR $APP_HOME
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "build"]

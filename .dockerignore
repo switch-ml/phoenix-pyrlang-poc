@@ -1,0 +1,7 @@
+_build
+deps
+assets/node_modules
+test
+venv
+script.py
+.elixir_ls

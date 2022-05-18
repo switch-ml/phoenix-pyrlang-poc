@@ -5,10 +5,19 @@ services:
     build:
       context: ./
       dockerfile: ./docker/Dockerfile.phoenix
+    image: poc/elixir:latest
     ports:
       - 4000:4000
-      - 43699:43699
-  # app:
-  #   build:
-  #     context: ./
-  #     dockerfile: ./docker/Dockerfile.python
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  webpack:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile.webpack
+    command: yarn run watch
+
+  ml-poc:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile.ml

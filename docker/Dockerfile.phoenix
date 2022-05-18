@@ -1,60 +1,44 @@
-# Extend from the official Elixir image
 FROM elixir:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# installing Postgresql client
-RUN apt-get update && \
-    apt-get install -y postgresql-client
-
-
-
-
-# Install hex package manager
-RUN mix local.hex --force
-
-# Install rebar
-RUN mix local.rebar --force
-
-# Install the Phoenix framework itself
-RUN mix archive.install hex phx_new 1.5.3
-
-# apt update
-RUN apt-get update
-
-# apt-utils
-RUN apt-get install -y apt-utils 
-
-# Suggested https://hexdocs.pm/phoenix/installation.html
-RUN apt-get update && apt-get install -y \
-    inotify-tools \
+RUN mix local.hex --force \
+    && mix archive.install --force hex phx_new \
+    && apt-get update \
+    && curl -sL https://deb.nodesource.com/setup_lts.x | bash \
+    && apt-get install -y apt-utils \
+    && apt-get install -y nodejs \
+    && apt-get install -y build-essential \
+    && apt-get install -y inotify-tools \
+    && apt-get -yqq install docker.io \
+    && mix local.rebar --force\
+    && curl https://sh.rustup.rs -sSf > /tmp/rustup-init.sh \
+    && chmod +x /tmp/rustup-init.sh \
+    && sh /tmp/rustup-init.sh -y \
+    && rm -rf /tmp/rustup-init.sh \
+    && apt-get update \
+    && apt-get install -y python3-pip python3-dev \
+    && cd /usr/local/bin \
+    && ln -s /usr/bin/python3 python \
+    && pip3 --no-cache-dir install --upgrade pip \
     && rm -rf /var/lib/apt/lists/*
 
-# Create app directory and copy the Elixir projects into it
-RUN mkdir /app
-COPY . /app
-WORKDIR /app
+ENV PATH="/root/.cargo/bin:${PATH}"
 
-# dependencies cleaning
-RUN mix deps.clean --all
+ENV APP_HOME /app
 
-# Fetching dependencies
-# RUN mix deps.get --force
-
-RUN mix setup
-
-RUN mix deps.update --all
-
-# Compile the project
-RUN mix do compile
+RUN mkdir -p $APP_HOME
 
 COPY . /app
 
-# Adding persmissions
-RUN chmod +x /app/entrypoint.sh
+WORKDIR $APP_HOME
 
-RUN chmod +x entrypoint.sh
+RUN mix local.hex --force && mix local.rebar --force \
+    && mix deps.get && mix deps.compile
 
-EXPOSE 4000
+RUN pip install --upgrade pip
 
-CMD ["/app/entrypoint.sh"]
+RUN pip install -r requirements.txt
+
+COPY . .
+

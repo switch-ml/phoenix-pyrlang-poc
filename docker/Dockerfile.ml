@@ -1,5 +1,5 @@
 FROM python:latest
 
-COPY . .
+COPY ml/requirements.txt .
 
 RUN pip install -r requirements.txt
