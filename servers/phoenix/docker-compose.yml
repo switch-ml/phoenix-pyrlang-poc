@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: ./.devcontainer/Dockerfile
+    ports:
+      - 127.0.0.1:4000:4000
