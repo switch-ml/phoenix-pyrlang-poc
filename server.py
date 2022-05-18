@@ -51,7 +51,7 @@ input = ast.literal_eval(args.input)
 
         profiles = {
             "python": {
-                "docker_image": "ml_ml-poc:latest",
+                "docker_image": "pyrlangpoc_ml-poc:latest",
             }
         }
 
