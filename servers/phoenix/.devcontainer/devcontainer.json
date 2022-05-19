@@ -1,0 +1,18 @@
+{
+  "name": "Pyrlangpoc",
+
+  "dockerComposeFile": "../docker-compose.yml",
+
+  // Name of the service for the container that VS Code should // use.
+  // Update this value and .devcontainer/docker-compose.yml to the real service name.
+  "service": "web",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "extensions": []
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "docker --version",
+}
