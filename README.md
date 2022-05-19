@@ -29,7 +29,7 @@
    - python server.py
    ```
 
-3. Terminal-2: Python Client Server
+3. Terminal-3: Python Client Server
 
    - if python3 installed as python use python else use python3
 
